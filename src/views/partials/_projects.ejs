@@ -1,0 +1,14 @@
+<section class="projects container mx-auto px-4 py-16" id="projects">
+  <h2 class="text-5xl md:text-7xl font-bold text-white mb-12 text-center">
+    My Projects
+  </h2>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <% if (locals.projects && projects.length > 0) { %> <%
+    projects.forEach(project => { %> <%- include('_project-card', { project })
+    %> <% }) %> <% } else { %>
+    <p class="text-gray-400 col-span-full text-center text-lg">
+      No projects to display yet.
+    </p>
+    <% } %>
+  </div>
+</section>

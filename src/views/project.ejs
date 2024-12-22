@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/css/output.css" />
+  </head>
+  <body class="bg-gray-100">
+    <header class="bg-white shadow-md">
+      <div class="container mx-auto px-4 py-6">
+        <a href="/" class="text-blue-600 hover:text-blue-800 mb-4 inline-block">
+          ← Back to Projects
+        </a>
+        <h1 class="text-3xl font-bold text-gray-800"><%= project.title %></h1>
+      </div>
+    </header>
+
+    <section class="container mx-auto px-4 py-8">
+      <article class="bg-white rounded-lg shadow-md p-6">
+        <div class="mb-6">
+          <p class="text-gray-600 text-lg"><%= project.description %></p>
+        </div>
+
+        <div class="mb-6">
+          <h2 class="text-xl font-semibold text-gray-800 mb-3">
+            Technologies Used
+          </h2>
+          <div class="flex flex-wrap gap-2">
+            <% project.technologies.forEach(tech => { %>
+            <span
+              class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm"
+            >
+              <%= tech %>
+            </span>
+            <% }) %>
+          </div>
+        </div>
+
+        <div class="flex gap-4">
+          <% if (project.githubUrl) { %>
+          <a
+            href="<%= project.githubUrl %>"
+            target="_blank"
+            class="inline-block bg-gray-800 text-white px-4 py-2 rounded-md hover:bg-gray-700 transition-colors"
+          >
+            View on GitHub
+          </a>
+          <% } %> <% if (project.liveUrl) { %>
+          <a
+            href="<%= project.liveUrl %>"
+            target="_blank"
+            class="inline-block bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors"
+          >
+            View Live Demo
+          </a>
+          <% } %>
+        </div>
+      </article>
+    </section>
+
+    <footer class="bg-gray-800 text-white mt-12">
+      <div class="container mx-auto px-4 py-6 text-center">
+        <p>&copy; <%= new Date().getFullYear() %> Your Name</p>
+      </div>
+    </footer>
+  </body>
+</html>
