@@ -1,8 +1,17 @@
 import dotenv from "dotenv";
 import { Request, Response } from "express";
+import rateLimit from "express-rate-limit";
 import nodemailer from "nodemailer";
 
 dotenv.config();
+
+// Rate Limit
+export const contactLimiter = rateLimit({
+  windowMs: 60 * 60 * 1000,
+  max: 5,
+  message: "Too many emails sent. Please try again later.",
+});
+
 // Create transporter for Outlook
 const transporter = nodemailer.createTransport({
   service: "gmail",
